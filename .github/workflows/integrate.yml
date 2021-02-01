@@ -26,7 +26,7 @@ jobs:
           node-version: '14'
       - run: yarn install
       - run: yarn export
-      - run: touch out/_next/.nojekyll
+      - run: touch _next/.nojekyll
         env:
           CI: true
 
