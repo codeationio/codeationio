@@ -22,7 +22,7 @@ const TimeBox: FC<{ title: string }> = ({ children, title }) => {
 };
 
 const useTimer = () => {
-  const countDownDate = new Date('Mar 31, 2021 23:59:59').getTime();
+  const countDownDate = new Date('Mar 31, 2022 23:59:59').getTime();
   const [time, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
