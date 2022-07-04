@@ -1,16 +1,18 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { FC, useEffect, useState } from 'react';
 
 const imageLink =
-  'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
+  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
 
 const bgStyle = {
-  backgroundImage: `url(${imageLink});`
+  backgroundImage: `url(${imageLink})`,
+  filter: 'blur(0.2rem)'
 };
 
 const TimeBox: FC<{ title: string }> = ({ children, title }) => {
   return (
-    <span className="relative center flex-col border border-gray-300 shadow-lg p-4 w-40 h-40 mt-4 text-gray-100 text-4xl text-bold bg-opacity-20 bg-gray-900 rounded-lg m-2">
+    <span className="relative center flex-col border border-gray-300 shadow-lg p-4 w-40 h-40 mt-4 text-gray-100 text-4xl text-bold bg-opacity-80 bg-black rounded-lg m-2">
       {title && (
         <>
           <span className="absolute top-2 capitalize text-2xl">{title}</span>
@@ -22,7 +24,7 @@ const TimeBox: FC<{ title: string }> = ({ children, title }) => {
 };
 
 const useTimer = () => {
-  const countDownDate = new Date('Mar 31, 2022 23:59:59').getTime();
+  const countDownDate = new Date('July 20, 2022 23:59:59').getTime();
   const [time, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -56,7 +58,8 @@ const Home: FC = () => {
   const { days, hours, minutes, seconds } = useTimer();
 
   return (
-    <div className="h-screen center flex-col bg-gray-900 bg-no-repeat bg-cover" style={bgStyle}>
+    <div className="h-screen center flex-col bg-gray-900">
+      <div style={bgStyle} className="absolute h-full w-full bg-no-repeat bg-cover" />
       <Head>
         <title>Codeation.io</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -64,8 +67,12 @@ const Home: FC = () => {
           href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap"
           rel="stylesheet"></link>
       </Head>
-      <h1 className="text-4xl text-center text-gray-100 uppercase mb-10 bg-gray-900 p-2 bg-opacity-10 rounded-lg">
-        Under Construction
+      <div className="mb-10 bg-black p-8 bg-opacity-80 rounded-lg z-10">
+        <Image src="/codeation-logo.svg" width="684" height="100" alt="Codeation.io logo" />
+      </div>
+
+      <h1 className="text-4xl text-center text-gray-100 uppercase mb-10 bg-black p-8 bg-opacity-80 rounded-lg z-10">
+        Busy Innovating... <br /> Be back in
       </h1>
       <div className="center flex-wrap">
         <TimeBox title="Days">{days}</TimeBox>
